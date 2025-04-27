@@ -3,75 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lauhith Natarajan - Business Analyst Portfolio">
     <title>Lauhith Natarajan - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="layout-container">
-        <!-- Profile Section -->
-        <aside class="profile-section">
-            <div class="profile-container">
-                <div class="profile-image-container">
-                    <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light" alt="Profile Avatar" class="profile-image">
-                </div>
+    <nav id="navbar">
+        <div class="nav-content">
+            <a href="#home" class="home-link">Home</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#website">Website</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
                 <h1>Lauhith Natarajan</h1>
-                <p class="title">Aspiring Business Analyst</p>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#about" class="active">About</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="#projects">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-
-            <section id="about" class="section">
-                <h2>About Me</h2>
-                <div class="content-box">
-                    <p>I am a passionate business analytics professional with a Post-graduate degree in Business Analytics & International Business. Currently seeking opportunities as an Entry-level Business Analyst in Canada, I combine analytical thinking with business acumen to drive data-informed decisions.</p>
-                </div>
-            </section>
-
-            <section id="projects" class="section">
-                <h2>Portfolio</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h3>Restaurant SQL Project</h3>
-                        <p>Comprehensive database analysis of restaurant operations using SQL, including customer behavior patterns and revenue optimization recommendations.</p>
-                        <div class="project-links">
-                            <a href="#" class="button">View on GitHub</a>
-                            <a href="#" class="button">Live Demo</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Personal Finance Dashboard</h3>
-                        <p>Interactive dashboard visualizing personal finance metrics, spending patterns, and investment tracking using data analytics tools.</p>
-                        <div class="project-links">
-                            <a href="#" class="button">View on GitHub</a>
-                            <a href="#" class="button">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="resume" class="section">
-                <h2>Resume</h2>
-                <div class="content-box">
-                    <a href="resume.pdf" class="download-button" download>
-                        <i class="fas fa-download"></i> Download Resume
+                <h2>Business Analyst & Data Storyteller</h2>
+                <p class="hero-bio">Transforming complex data into actionable business insights</p>
+                <div class="social-icons">
+                    <a href="mailto:your.email@example.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/your-username" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-            </section>
+                <div class="hero-buttons">
+                    <button class="cta-button" onclick="scrollToSection('projects')">View My Work</button>
+                    <button class="cta-button secondary" onclick="scrollToSection('contact')">Contact Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <section id="contact" class="section">
-                <h2>Contact</h2>
-                <div class="content-box">
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a passionate business analytics professional with a Post-graduate degree in Business Analytics & International Business. Currently seeking opportunities as an Entry-level Business Analyst in Canada, I combine analytical thinking with business acumen to drive data-informed decisions.</p>
+                    
+                    <h3>Education</h3>
+                    <p>Post Graduate Diploma in Business Analytics & International Business</p>
+                    
+                    <h3>Skills</h3>
+                    <div class="skills-container">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Business Intelligence</span>
+                        <span class="skill-tag">Financial Analysis</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="projects-heading">PROJECTS</h2>
+            <p class="projects-subtitle">A glimpse of the projects I've been working on</p>
+            <div class="project-filters">
+                <button class="filter-btn" data-filter="all">Show all</button>
+                <button class="filter-btn" data-filter="data-mining">Data mining</button>
+                <button class="filter-btn active" data-filter="dataviz">Dataviz</button>
+                <button class="filter-btn" data-filter="dashboard">Dashboard</button>
+            </div>
+            <div class="project-grid">
+                <div class="project-placeholder" data-category="dataviz">
+                    <!-- Empty placeholder for future project image -->
+                </div>
+                <div class="project-placeholder" data-category="data-mining">
+                    <!-- Empty placeholder for future project image -->
+                </div>
+                <div class="project-placeholder" data-category="dashboard">
+                    <!-- Empty placeholder for future project image -->
+                </div>
+                <div class="project-placeholder" data-category="dataviz">
+                    <!-- Empty placeholder for future project image -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="website" class="website">
+        <div class="container">
+            <h2>Website</h2>
+            <div class="website-content">
+                <p>This section showcases my web development projects and skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Blog</h2>
+            <div class="blog-content">
+                <p>Read my latest thoughts and insights on data analytics, business intelligence, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <p>Feel free to reach out to me via email or through social media:</p>
                     <div class="social-links">
                         <a href="mailto:your.email@example.com" class="social-link">
                             <i class="fas fa-envelope"></i>
@@ -84,9 +148,16 @@
                         </a>
                     </div>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Lauhith Natarajan. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html> 

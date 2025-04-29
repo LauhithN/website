@@ -481,8 +481,8 @@ section {
 
 .contact-content {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xl);
+    justify-content: center;
+    text-align: center;
 }
 
 .contact-form, .contact-info {
@@ -515,7 +515,8 @@ section {
 }
 
 .contact-info {
-    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .contact-info p {
@@ -526,20 +527,21 @@ section {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: white;
     color: var(--dark-gray);
     transition: var(--transition);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     text-decoration: none;
     border: 1px solid var(--medium-gray);
 }
@@ -611,7 +613,7 @@ footer {
 
 /* Website section */
 .website {
-    background-color: var(--light-gray);
+    background-color: white;
 }
 
 .website-content {
@@ -667,4 +669,17 @@ footer {
     .website-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* About section additions */
+.text-center {
+    text-align: center;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    justify-content: center;
 } 

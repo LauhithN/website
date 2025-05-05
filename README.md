@@ -1,52 +1,57 @@
-<h1 align="center">🌟 Modern Web Experience</h1>
+<h1 align="center">🚀 My Developer Portfolio</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
+  <a href="https://website-two-sepia-48.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=vercel" />
+  </a>
+  <a href="https://github.com/LauhithN" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-LauhithN-black?style=for-the-badge&logo=github" />
+  </a>
 </p>
 
 <p align="center">
-  🚀 A sleek, fast, and responsive website built with pure HTML, CSS, and JavaScript.
+  ✨ A modern, responsive, and blazing fast portfolio website to showcase my skills, projects, and experience.
   <br />
-  ✨ Live Preview ➜ <a href="https://website-two-sepia-48.vercel.app/" target="_blank"><strong>Click Here</strong></a>
+  Built with 💖 using HTML, CSS, and JavaScript. No frameworks. No fluff.
 </p>
 
 ---
 
-## 📸 Demo Preview
+## 📸 Live Preview
 
-![Website Screenshot](assets/screenshot.png) <!-- Replace with your actual image path -->
+🌐 **Visit my portfolio:** [website-two-sepia-48.vercel.app](https://website-two-sepia-48.vercel.app/)
 
----
-
-## 💡 Features
-
-✅ Fully responsive layout  
-🎨 Clean & modern UI design  
-⚡ Fast load performance  
-📱 Mobile-friendly & interactive  
-📁 Easy to customize and deploy  
-🚀 Hosted on Vercel (free, fast CI/CD)
+![Portfolio Screenshot](assets/screenshot.png) <!-- Replace with your screenshot if available -->
 
 ---
 
-## 🔧 Tech Stack
+## 💼 Features
 
-| Technology | Description                    |
-|------------|--------------------------------|
-| HTML5      | Semantic and accessible markup |
-| CSS3       | Custom styling + Flexbox/Grid  |
-| JavaScript | Dynamic interactions           |
-| Vercel     | Deployment & hosting           |
+- 🎨 Clean and elegant UI/UX
+- 📱 Mobile responsive design
+- 🧠 Highlights skills, projects & resume
+- ✉️ Contact form integration (optional)
+- ⚡ Hosted on Vercel for fast performance
+- 🌙 Dark mode ready (if supported)
 
 ---
 
-## 🚀 Getting Started
+## 🛠 Tech Stack
 
-Clone the repository and open in your browser:
+| Technology | Role                          |
+|------------|-------------------------------|
+| HTML5      | Markup                        |
+| CSS3       | Styling, layout & animations  |
+| JavaScript | Interactivity & functionality |
+| Vercel     | Hosting & continuous deploy   |
+
+---
+
+## 🧰 Getting Started
+
+To run locally:
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/LauhithN/portfolio-site.git
+cd portfolio-site
 open index.html

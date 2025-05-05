@@ -1,4 +1,4 @@
-<h1 align="center">🚀 My Developer Portfolio</h1>
+<h1 align="center">🚀 My Portfolio Website</h1>
 
 <p align="center">
   <a href="https://website-two-sepia-48.vercel.app/" target="_blank">
@@ -12,7 +12,7 @@
 <p align="center">
   ✨ A modern, responsive, and blazing fast portfolio website to showcase my skills, projects, and experience.
   <br />
-  Built with 💖 using HTML, CSS, and JavaScript. No frameworks. No fluff.
+  Built with using HTML, CSS, and JavaScript. No frameworks. No fluff.
 </p>
 
 ---
@@ -30,9 +30,9 @@
 - 🎨 Clean and elegant UI/UX
 - 📱 Mobile responsive design
 - 🧠 Highlights skills, projects & resume
-- ✉️ Contact form integration (optional)
+- ✉️ Contact form integration
 - ⚡ Hosted on Vercel for fast performance
-- 🌙 Dark mode ready (if supported)
+- 🌙 Dark mode ready 
 
 ---
 

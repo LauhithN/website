@@ -3,160 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lauhith Natarajan - Business Analyst Portfolio">
-    <title>Lauhith Natarajan - Portfolio</title>
+    <meta name="description" content="Lauhith Natarajan portfolio: immersive Business/Data Analyst experience built as The Data Universe.">
+    <meta name="keywords" content="Lauhith Natarajan, Business Analyst, Data Analyst, Toronto, Portfolio, SQL, Tableau, Power BI, Python">
+    <meta name="author" content="Lauhith Natarajan">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta property="og:title" content="Lauhith Natarajan | The Data Universe">
+    <meta property="og:description" content="Turning Raw Data to Business Gold through immersive analytics experiences.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/finance-dashboard.jpg">
+    <meta property="og:locale" content="en_CA">
+    <title>Lauhith Natarajan | The Data Universe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <nav id="navbar">
-        <div class="nav-content">
-            <a href="#home" class="home-link">Home</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#website">Website</a></li>
-                <li><a href="#contact">Contact</a></li>
+<body class="theme-dark">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <div id="loader" class="loader" role="status" aria-live="polite">
+        <div class="loader-panel">
+            <p class="loader-kicker">MISSION BOOT</p>
+            <h1>Initializing<span class="loader-dots" aria-hidden="true"></span></h1>
+        </div>
+    </div>
+
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+    <div id="easter-egg-toast" class="toast" role="status" aria-live="polite"></div>
+
+    <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+        <span class="cursor-core"></span>
+        <span class="cursor-ring"></span>
+    </div>
+
+    <header id="site-header" class="site-header">
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a class="brand interactive" href="#hero">
+                <span class="brand-small">Lauhith Natarajan</span>
+                <span class="brand-big">DATA UNIVERSE</span>
+            </a>
+
+            <ul class="nav-links" id="desktop-nav">
+                <li><a class="interactive" href="#hero">Mission Control</a></li>
+                <li><a class="interactive" href="#about">Terminal</a></li>
+                <li><a class="interactive" href="#skills">Skills</a></li>
+                <li><a class="interactive" href="#projects">Missions</a></li>
+                <li><a class="interactive" href="#timeline">Flight Path</a></li>
+                <li><a class="interactive" href="#resume">Resume</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="icon-toggle interactive" aria-label="Toggle dark and light mode" aria-pressed="false">
+                    <span class="toggle-orb" aria-hidden="true"></span>
+                </button>
+                <button id="sound-toggle" class="icon-toggle interactive" aria-label="Toggle interface sounds" aria-pressed="false">
+                    <i class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
+                </button>
+                <button id="menu-toggle" class="menu-toggle interactive" aria-controls="nav-overlay" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <div id="nav-overlay" class="nav-overlay" hidden>
+            <ul>
+                <li><a class="interactive" href="#hero">Mission Control</a></li>
+                <li><a class="interactive" href="#about">Terminal</a></li>
+                <li><a class="interactive" href="#skills">Skills</a></li>
+                <li><a class="interactive" href="#projects">Missions</a></li>
+                <li><a class="interactive" href="#timeline">Flight Path</a></li>
+                <li><a class="interactive" href="#resume">Resume</a></li>
             </ul>
         </div>
-    </nav>
+    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Lauhith Natarajan</h1>
-                <h2>Business Analyst & Data Storyteller</h2>
-                <p class="hero-bio">Transforming complex data into actionable business insights</p>
-                <div class="social-icons">
-                    <a href="mailto:lauhithn@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/LauhithN" target="_blank" class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/lauhith-n/" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+    <main id="main-content">
+        <section id="hero" class="panel hero-panel" data-nav="hero">
+            <canvas id="hero-particles" aria-hidden="true"></canvas>
+
+            <div class="container hero-grid">
+                <p class="eyebrow">Mission Control / Toronto, ON</p>
+                <h1 id="hero-title" class="hero-title"><span id="typed-name"></span><span id="hero-cursor" class="typing-cursor" aria-hidden="true"></span></h1>
+                <p class="hero-subtitle">Business + Data Analyst candidate who blends analytical rigor, design clarity, and technical execution.</p>
+                <p id="hero-tagline" class="hero-tagline" aria-label="Turning Raw Data to Business Gold">
+                    <span style="--word-order: 0">Turning</span>
+                    <span style="--word-order: 1">Raw</span>
+                    <span style="--word-order: 2">Data</span>
+                    <span class="arrow" style="--word-order: 3">&rarr;</span>
+                    <span style="--word-order: 4">Business</span>
+                    <span style="--word-order: 5">Gold</span>
+                </p>
+
+                <div class="hero-actions">
+                    <a class="glass-btn pulse interactive" href="#projects">Launch Mission Log</a>
+                    <a class="glass-btn interactive" href="#resume">Download Package</a>
                 </div>
-                <div class="hero-buttons">
-                    <button class="cta-button secondary" onclick="scrollToSection('projects')">View My Work</button>
-                    <button class="cta-button secondary" onclick="scrollToSection('contact')">Contact Me</button>
+
+                <div class="hero-metrics" aria-label="Quick summary">
+                    <article>
+                        <h3>Role Target</h3>
+                        <p>Business Analyst / Data Analyst</p>
+                    </article>
+                    <article>
+                        <h3>Location</h3>
+                        <p>Toronto, Ontario</p>
+                    </article>
+                    <article>
+                        <h3>Operating Mode</h3>
+                        <p>Data Storytelling + Execution</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="projects-heading">ABOUT ME</h2>
-            <div class="about-content">
-                <div class="about-text card">
-                    <p>I am a passionate business analytics professional with a Post-graduate degree in Business Analytics & International Business. Currently seeking opportunities as an Entry-level Business Analyst in Canada, I combine analytical thinking with business acumen to drive data-informed decisions.</p>
-                    
-                    <h3 class="section-subheading">EDUCATION</h3>
-                    <p class="text-center">Post Graduate Diploma in Business Analytics & International Business</p>
-                    
-                    <h3 class="section-subheading">SKILLS</h3>
-                    <div class="skills-container">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Business Intelligence</span>
-                        <span class="skill-tag">Financial Analysis</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Python</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <button class="scroll-indicator interactive" data-target="#about" aria-label="Scroll to next section">
+                <span class="mouse-icon" aria-hidden="true"><span class="wheel"></span></span>
+                <span>Scroll to explore</span>
+            </button>
+        </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="projects-heading">PROJECTS</h2>
-            <p class="projects-subtitle">A glimpse of the projects I've been working on</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/personal-finances.jpg" alt="Personal Finances Dashboard" loading="lazy" />
-                    </div>
-                    <h3>Personal Finances</h3>
-                    <p>A visually engaging Tableau dashboard to track income, expenses, and savings over time.</p>
-                    <a href="https://github.com/LauhithN/Personal-Finances" target="_blank" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/restaurant-performance.jpg" alt="Restaurant Performance Dashboard" loading="lazy" />
-                    </div>
-                    <h3>Restaurant Performance</h3>
-                    <p>A Tableau dashboard analyzing restaurant sales, customer feedback, and staff performance.</p>
-                    <a href="https://github.com/LauhithN/Restaurant-performance" target="_blank" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/finance-dashboard.jpg" alt="Finance Dashboard" loading="lazy" />
-                    </div>
-                    <h3>Finance Dashboard</h3>
-                    <p>A web-based dashboard for tracking expenses, savings, investments, and bills.</p>
-                    <a href="https://finance-dashboard-theta-rouge.vercel.app/" target="_blank" class="project-link">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="about" class="panel about-panel section-reveal" data-nav="about">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-kicker">SECTION 02</p>
+                    <h2>The Terminal</h2>
+                    <p>Command-line snapshot of my analyst stack and current mission status.</p>
+                </header>
 
-    <section id="website" class="website">
-        <div class="container">
-            <h2 class="projects-heading">WEBSITE</h2>
-            <p class="projects-subtitle">Additional web projects I've developed</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/finance-dashboard.jpg" alt="Finance Dashboard" loading="lazy" />
+                <div class="terminal-shell">
+                    <div class="terminal-topbar" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p>lauhith@mission-terminal</p>
                     </div>
-                    <h3>Finance Dashboard</h3>
-                    <p>A comprehensive financial management tool that helps users track expenses, savings goals, investments, and bills in one place.</p>
-                    <a href="https://finance-dashboard-theta-rouge.vercel.app/" target="_blank" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/1200x800/4ecdc4/ffffff?text=Blog" alt="Business Analytics Blog" loading="lazy" />
-                    </div>
-                    <h3>My Blog</h3>
-                    <p>Insights and articles on business analytics, data visualization, and more.</p>
-                    <a href="https://portfolio-blog-red.vercel.app/" target="_blank" class="project-link">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="terminal-body">
+                        <pre id="terminal-output" aria-live="polite"></pre>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="projects-heading">CONTACT</h2>
-            <p class="projects-subtitle">Let's connect and discuss opportunities</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>Feel free to reach out to me via email or through social media:</p>
-                    <div class="social-links">
-                        <a href="mailto:lauhithn@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/lauhith-n/" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/LauhithN" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        <div class="terminal-progress-list" aria-label="Skill loading progress">
+                            <div class="terminal-progress" data-level="95">
+                                <div class="skill-meta"><span>SQL</span><span>95%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                            <div class="terminal-progress" data-level="90">
+                                <div class="skill-meta"><span>Python</span><span>90%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                            <div class="terminal-progress" data-level="92">
+                                <div class="skill-meta"><span>Tableau</span><span>92%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                            <div class="terminal-progress" data-level="88">
+                                <div class="skill-meta"><span>Power BI</span><span>88%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                            <div class="terminal-progress" data-level="96">
+                                <div class="skill-meta"><span>Excel</span><span>96%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                            <div class="terminal-progress" data-level="91">
+                                <div class="skill-meta"><span>Data Storytelling</span><span>91%</span></div>
+                                <div class="progress-track"><div class="progress-fill"></div></div>
+                            </div>
+                        </div>
+
+                        <p id="terminal-status-line" class="terminal-status"></p>
+                        <p class="terminal-input"><span class="prompt">&gt;</span><span class="terminal-blink" aria-hidden="true"></span></p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 Lauhith Natarajan. All rights reserved.</p>
-        </div>
+        <section id="skills" class="panel skills-panel section-reveal" data-nav="skills">
+            <div class="mesh-bg" aria-hidden="true"></div>
+            <div class="container skills-layout">
+                <header class="section-head">
+                    <p class="section-kicker">SECTION 03</p>
+                    <h2>Data Visualization Showcase</h2>
+                    <p>Live competency map. Hover or tap each node to inspect depth and mission evidence.</p>
+                </header>
+
+                <div class="skills-content">
+                    <div class="radar-card">
+                        <canvas id="skills-radar" role="img" aria-label="Radar chart showing Lauhith's skills"></canvas>
+                    </div>
+
+                    <aside class="skill-inspector" id="skill-inspector" aria-live="polite">
+                        <h3 id="inspector-title">Hover or tap any radar node</h3>
+                        <p id="inspector-text">Each point maps capability to real project execution.</p>
+                        <p id="inspector-project"><strong>Mission:</strong> Personal Finances Command Center</p>
+                        <ul id="inspector-tags" class="inspector-tags">
+                            <li>Analysis</li>
+                            <li>Visualization</li>
+                            <li>Business Value</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="panel projects-panel section-reveal" data-nav="projects">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-kicker">SECTION 04</p>
+                    <h2>Mission Log</h2>
+                    <p>Completed missions with expandable technical briefs and dynamic repository telemetry.</p>
+                </header>
+
+                <div class="filter-row" role="tablist" aria-label="Filter project categories">
+                    <button class="filter-btn interactive active" role="tab" aria-selected="true" data-filter="all">All Missions</button>
+                    <button class="filter-btn interactive" role="tab" aria-selected="false" data-filter="dashboard">Dashboards</button>
+                    <button class="filter-btn interactive" role="tab" aria-selected="false" data-filter="finance">Finance</button>
+                    <button class="filter-btn interactive" role="tab" aria-selected="false" data-filter="analytics">Analytics</button>
+                    <button class="filter-btn interactive" role="tab" aria-selected="false" data-filter="web">Web Apps</button>
+                </div>
+
+                <div id="mission-grid" class="mission-grid">
+                    <article class="mission-card" data-category="dashboard finance analytics">
+                        <div class="tilt-shell">
+                            <div class="tilt-inner">
+                                <div class="mission-thumb">
+                                    <img src="images/personal-finances.jpg?v=20260206" alt="Personal finances dashboard preview" decoding="async">
+                                    <span class="status-badge">COMPLETED <i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="mission-body">
+                                    <div class="mission-topline">
+                                        <h3>Personal Finances Command Center</h3>
+                                        <div class="github-metrics" data-repo="LauhithN/Personal-Finances">
+                                            <span class="stars">Stars: --</span>
+                                            <span class="forks">Forks: --</span>
+                                        </div>
+                                    </div>
+                                    <p>A Tableau-driven command console for tracking income streams, expense leakage, and monthly savings momentum.</p>
+                                    <ul class="pill-list">
+                                        <li>Tableau</li>
+                                        <li>Data Modeling</li>
+                                        <li>KPI Design</li>
+                                    </ul>
+                                    <button class="expand-btn interactive" aria-expanded="false" aria-controls="mission-details-1">View Mission Details</button>
+                                    <div class="mission-details" id="mission-details-1">
+                                        <p>Built a scenario-ready dashboard with filters for category trends, variance tracking, and discretionary spend alerts. Focused on decision speed and visual hierarchy.</p>
+                                        <div class="mission-links">
+                                            <a class="interactive" href="https://github.com/LauhithN/Personal-Finances" target="_blank" rel="noopener">GitHub Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="mission-card" data-category="dashboard analytics">
+                        <div class="tilt-shell">
+                            <div class="tilt-inner">
+                                <div class="mission-thumb">
+                                    <img src="images/restaurant-performance.jpg?v=20260206" alt="Restaurant performance dashboard preview" decoding="async">
+                                    <span class="status-badge">COMPLETED <i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="mission-body">
+                                    <div class="mission-topline">
+                                        <h3>Restaurant Performance Intelligence</h3>
+                                        <div class="github-metrics" data-repo="LauhithN/Restaurant-performance">
+                                            <span class="stars">Stars: --</span>
+                                            <span class="forks">Forks: --</span>
+                                        </div>
+                                    </div>
+                                    <p>An analytics cockpit linking sales, customer feedback, and staffing outcomes to uncover service and profitability patterns.</p>
+                                    <ul class="pill-list">
+                                        <li>Tableau</li>
+                                        <li>Operational Analytics</li>
+                                        <li>Insight Storytelling</li>
+                                    </ul>
+                                    <button class="expand-btn interactive" aria-expanded="false" aria-controls="mission-details-2">View Mission Details</button>
+                                    <div class="mission-details" id="mission-details-2">
+                                        <p>Mapped operational lag points and designed visual narratives for managers to isolate underperforming shifts, menu categories, and satisfaction bottlenecks.</p>
+                                        <div class="mission-links">
+                                            <a class="interactive" href="https://github.com/LauhithN/Restaurant-performance" target="_blank" rel="noopener">GitHub Repository</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="mission-card" data-category="finance web dashboard">
+                        <div class="tilt-shell">
+                            <div class="tilt-inner">
+                                <div class="mission-thumb">
+                                    <img src="images/finance-dashboard.jpg?v=20260206" alt="Finance dashboard web app preview" decoding="async">
+                                    <span class="status-badge">COMPLETED <i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="mission-body">
+                                    <div class="mission-topline">
+                                        <h3>Finance Dashboard Web App</h3>
+                                        <div class="github-metrics">
+                                            <span class="stars">Live build</span>
+                                            <span class="forks">Production link</span>
+                                        </div>
+                                    </div>
+                                    <p>A browser-based financial command center combining expenses, savings goals, investments, and bill forecasting.</p>
+                                    <ul class="pill-list">
+                                        <li>JavaScript</li>
+                                        <li>UI Engineering</li>
+                                        <li>Finance Tracking</li>
+                                    </ul>
+                                    <button class="expand-btn interactive" aria-expanded="false" aria-controls="mission-details-3">View Mission Details</button>
+                                    <div class="mission-details" id="mission-details-3">
+                                        <p>Designed responsive interfaces and modular data views that help users see their monthly money flow at a glance, with cleaner interactions than spreadsheet workflows.</p>
+                                        <div class="mission-links">
+                                            <a class="interactive" href="https://finance-dashboard-theta-rouge.vercel.app/" target="_blank" rel="noopener">Live Mission Build</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="mission-card" data-category="web analytics">
+                        <div class="tilt-shell">
+                            <div class="tilt-inner">
+                                <div class="mission-thumb">
+                                    <img src="images/business-analytics-blog.svg?v=20260206" alt="Business analytics blog platform preview" decoding="async">
+                                    <span class="status-badge">COMPLETED <i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                                </div>
+                                <div class="mission-body">
+                                    <div class="mission-topline">
+                                        <h3>Business Analytics Blog Platform</h3>
+                                        <div class="github-metrics">
+                                            <span class="stars">Knowledge Ops</span>
+                                            <span class="forks">Public insights</span>
+                                        </div>
+                                    </div>
+                                    <p>A publishing channel for analytics explainers, dashboard thinking, and business-focused data narratives.</p>
+                                    <ul class="pill-list">
+                                        <li>Content Strategy</li>
+                                        <li>Web Publishing</li>
+                                        <li>Analytics Education</li>
+                                    </ul>
+                                    <button class="expand-btn interactive" aria-expanded="false" aria-controls="mission-details-4">View Mission Details</button>
+                                    <div class="mission-details" id="mission-details-4">
+                                        <p>Structured short-form and deep-dive posts to communicate analytical thinking clearly to non-technical stakeholders and recruiters reviewing practical communication skills.</p>
+                                        <div class="mission-links">
+                                            <a class="interactive" href="https://portfolio-blog-red.vercel.app/" target="_blank" rel="noopener">Open Blog Mission</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="panel timeline-panel section-reveal" data-nav="timeline">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-kicker">SECTION 05</p>
+                    <h2>Flight Path</h2>
+                    <p>Education and execution milestones connected as one trajectory.</p>
+                </header>
+
+                <div class="flight-path">
+                    <svg class="timeline-svg" viewBox="0 0 100 760" preserveAspectRatio="none" aria-hidden="true">
+                        <path id="timeline-track" d="M50 20 C50 200 50 260 50 420 C50 580 50 640 50 740"></path>
+                        <path id="timeline-progress" d="M50 20 C50 200 50 260 50 420 C50 580 50 640 50 740"></path>
+                    </svg>
+
+                    <div class="timeline-items">
+                        <article class="timeline-item">
+                            <button class="timeline-toggle interactive" aria-expanded="false" aria-controls="timeline-detail-1">
+                                <span class="timeline-node" aria-hidden="true"></span>
+                                <span>
+                                    <strong>Post-Graduate Diploma: Business Analytics & International Business</strong>
+                                    <small>Toronto, ON | 2023 - 2024</small>
+                                </span>
+                            </button>
+                            <div class="timeline-detail" id="timeline-detail-1" hidden>
+                                <p>Built strong foundations in decision analytics, business problem framing, international market context, and communication of complex findings to leadership audiences.</p>
+                            </div>
+                        </article>
+
+                        <article class="timeline-item">
+                            <button class="timeline-toggle interactive" aria-expanded="false" aria-controls="timeline-detail-2">
+                                <span class="timeline-node" aria-hidden="true"></span>
+                                <span>
+                                    <strong>Portfolio Mission Cycle: Dashboard & Analytics Builds</strong>
+                                    <small>Hands-on Project Execution | 2024 - Present</small>
+                                </span>
+                            </button>
+                            <div class="timeline-detail" id="timeline-detail-2" hidden>
+                                <p>Designed and shipped multi-domain analytics projects focused on financial visibility, operational performance, and stakeholder-ready narratives using Tableau and web technologies.</p>
+                            </div>
+                        </article>
+
+                        <article class="timeline-item">
+                            <button class="timeline-toggle interactive" aria-expanded="false" aria-controls="timeline-detail-3">
+                                <span class="timeline-node" aria-hidden="true"></span>
+                                <span>
+                                    <strong>Toronto Job Search Mission: BA/DA Opportunities</strong>
+                                    <small>Targeting Business/Data Analyst Roles | 2026</small>
+                                </span>
+                            </button>
+                            <div class="timeline-detail" id="timeline-detail-3" hidden>
+                                <p>Actively connecting with teams that value analytical thinking, practical dashboard execution, and business-first insight communication.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="panel resume-panel section-reveal" data-nav="resume">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-kicker">SECTION 06</p>
+                    <h2>Download Package</h2>
+                    <p>Instant access to my resume with preview, metadata, and launch animation.</p>
+                </header>
+
+                <div class="resume-shell">
+                    <div class="resume-preview" aria-label="Resume first-page preview">
+                        <object data="Lauhith_Natarajan_Resume.pdf#page=1&zoom=85" type="application/pdf">
+                            <p>Preview unavailable. <a class="interactive" href="Lauhith_Natarajan_Resume.pdf" target="_blank" rel="noopener">Open resume in browser</a>.</p>
+                        </object>
+                    </div>
+
+                    <div class="resume-actions">
+                        <p>Concise, recruiter-friendly breakdown of analytical skills, tools, and project impact.</p>
+
+                        <ul class="resume-meta">
+                            <li><span>File size</span><strong id="resume-size">52.9 KB</strong></li>
+                            <li><span>Last updated</span><strong id="resume-updated">January 2026</strong></li>
+                        </ul>
+
+                        <div class="resume-buttons">
+                            <a id="download-resume" class="rocket-btn interactive" href="Lauhith_Natarajan_Resume.pdf" download>
+                                <span>Download Resume</span>
+                                <span class="rocket-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></span>
+                            </a>
+                            <a id="view-resume" class="ghost-btn interactive" href="Lauhith_Natarajan_Resume.pdf#page=1" target="_blank" rel="noopener">View in Browser</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Lauhith Natarajan. Turning raw data into business gold.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script defer src="script.js"></script>
 </body>
-</html> 
+</html>
+
+

@@ -1,0 +1,55 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Business Analytics Blog preview</title>
+  <desc id="desc">Stylized preview image representing a business analytics blog dashboard with charts and insight cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1f"/>
+      <stop offset="60%" stop-color="#10243d"/>
+      <stop offset="100%" stop-color="#2a1354"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#122c47"/>
+      <stop offset="100%" stop-color="#1d1742"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="1060" cy="120" r="180" fill="#00d4ff" opacity="0.12"/>
+  <circle cx="170" cy="590" r="220" fill="#7c3aed" opacity="0.15"/>
+
+  <rect x="90" y="80" width="1100" height="560" rx="26" fill="#0f1b2f" opacity="0.9" stroke="#2f4e73" stroke-width="2"/>
+  <rect x="120" y="120" width="460" height="220" rx="16" fill="url(#panel)"/>
+  <rect x="610" y="120" width="550" height="100" rx="16" fill="url(#panel)"/>
+  <rect x="610" y="240" width="550" height="100" rx="16" fill="url(#panel)"/>
+  <rect x="120" y="370" width="1040" height="230" rx="16" fill="#111e33"/>
+
+  <text x="150" y="170" fill="#9ec7f5" font-size="28" font-family="Segoe UI, Arial, sans-serif">Business Analytics Blog</text>
+  <text x="150" y="205" fill="#7ea3cc" font-size="18" font-family="Segoe UI, Arial, sans-serif">Insight posts, KPI narratives, and data storytelling</text>
+
+  <polyline points="155,295 220,265 285,278 350,220 415,242 480,180 545,210" fill="none" stroke="url(#line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="220" cy="265" r="6" fill="#00d4ff"/>
+  <circle cx="350" cy="220" r="6" fill="#00d4ff"/>
+  <circle cx="480" cy="180" r="6" fill="#7c3aed"/>
+
+  <text x="640" y="176" fill="#dce9fb" font-size="22" font-family="Segoe UI, Arial, sans-serif">Weekly insight articles</text>
+  <text x="640" y="205" fill="#84a6cc" font-size="16" font-family="Segoe UI, Arial, sans-serif">Practical analytics for business teams</text>
+
+  <text x="640" y="296" fill="#dce9fb" font-size="22" font-family="Segoe UI, Arial, sans-serif">Dashboard explainers</text>
+  <text x="640" y="325" fill="#84a6cc" font-size="16" font-family="Segoe UI, Arial, sans-serif">From raw metrics to stakeholder decisions</text>
+
+  <rect x="155" y="420" width="280" height="140" rx="12" fill="#142844"/>
+  <rect x="455" y="420" width="280" height="140" rx="12" fill="#142844"/>
+  <rect x="755" y="420" width="280" height="140" rx="12" fill="#142844"/>
+
+  <text x="180" y="468" fill="#d6e8ff" font-size="18" font-family="Segoe UI, Arial, sans-serif">Case study</text>
+  <text x="180" y="494" fill="#84a6cc" font-size="14" font-family="Segoe UI, Arial, sans-serif">Restaurant performance</text>
+
+  <text x="480" y="468" fill="#d6e8ff" font-size="18" font-family="Segoe UI, Arial, sans-serif">How-to guide</text>
+  <text x="480" y="494" fill="#84a6cc" font-size="14" font-family="Segoe UI, Arial, sans-serif">Finance dashboard logic</text>
+
+  <text x="780" y="468" fill="#d6e8ff" font-size="18" font-family="Segoe UI, Arial, sans-serif">Analyst notes</text>
+  <text x="780" y="494" fill="#84a6cc" font-size="14" font-family="Segoe UI, Arial, sans-serif">SQL and BI workflows</text>
+</svg>

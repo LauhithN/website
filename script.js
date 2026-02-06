@@ -3,7 +3,7 @@
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const RESUME_FILE = "Lauhith_Natarajan_Resume.pdf";
+    const RESUME_FILE = "Lauhith_Natarajan_Final_Resume_One_Page.pdf";
 
     const confettiState = {
         pieces: [],
@@ -80,8 +80,6 @@
         initTimeline();
         initResumeMeta();
         initResumeLaunch();
-        initResumeBrowserOpen();
-        initCustomCursor();
     });
 
     function setCurrentYear() {
@@ -1162,65 +1160,6 @@
                 markLoaded();
             }
         });
-    }
-
-    function initResumeBrowserOpen() {
-        const viewResumeButton = document.getElementById("view-resume");
-        if (!viewResumeButton) {
-            return;
-        }
-
-        viewResumeButton.setAttribute("href", `${RESUME_FILE}#page=1`);
-
-        viewResumeButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            const opened = window.open(`${RESUME_FILE}#page=1`, "_blank", "noopener");
-            if (!opened) {
-                window.location.href = `${RESUME_FILE}#page=1`;
-            }
-        });
-    }
-
-    function initCustomCursor() {
-        if (prefersReducedMotion || isCoarsePointer) {
-            return;
-        }
-
-        const cursor = document.getElementById("custom-cursor");
-        if (!cursor) {
-            return;
-        }
-
-        document.body.classList.add("has-custom-cursor");
-
-        let targetX = window.innerWidth / 2;
-        let targetY = window.innerHeight / 2;
-        let currentX = targetX;
-        let currentY = targetY;
-
-        document.addEventListener("pointermove", (event) => {
-            targetX = event.clientX;
-            targetY = event.clientY;
-        });
-
-        const interactives = document.querySelectorAll("a, button, input, textarea, .interactive");
-        interactives.forEach((node) => {
-            node.addEventListener("pointerenter", () => {
-                cursor.classList.add("active");
-            });
-            node.addEventListener("pointerleave", () => {
-                cursor.classList.remove("active");
-            });
-        });
-
-        const animateCursor = () => {
-            currentX += (targetX - currentX) * 0.24;
-            currentY += (targetY - currentY) * 0.24;
-            cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
-            window.requestAnimationFrame(animateCursor);
-        };
-
-        animateCursor();
     }
 
     function clamp(value, min, max) {

@@ -1,57 +1,44 @@
-<h1 align="center">🚀 My Portfolio Website</h1>
+# lauhith.dev, sort of
 
-<p align="center">
-  <a href="https://website-two-sepia-48.vercel.app/" target="_blank">
-    <img src="https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=vercel" />
-  </a>
-  <a href="https://github.com/LauhithN" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-LauhithN-black?style=for-the-badge&logo=github" />
-  </a>
-</p>
+Personal site for Lauhith Natarajan, business and data analyst in Toronto.
 
-<p align="center">
-  ✨ A modern, responsive, and blazing fast portfolio website to showcase my skills, projects, and experience.
-  <br />
-  Built with using HTML, CSS, and JavaScript. No frameworks. No fluff.
-</p>
+Live: https://website-two-sepia-48.vercel.app/
 
----
+## What it is
 
-## 📸 Live Preview
+One HTML page, one stylesheet, one small script. No build step, no framework.
 
-🌐 **Visit my portfolio:** [website-two-sepia-48.vercel.app](https://website-two-sepia-48.vercel.app/)
+- `index.html` is the content. Edit text there.
+- `styles.css` holds the design tokens (colours, type, spacing) at the top, then layout.
+- `script.js` adds the small touches: header hairline on scroll, reveal on scroll,
+  current-section highlight in the nav, and the numbered markers on each figure.
+  Everything works with JavaScript off.
+- `assets/work/` holds the project figures. They are real screenshots of the
+  dashboards and apps, saved as WebP at 1400px wide.
+- `assets/og.png` is the social preview image.
 
-![Portfolio Screenshot](assets/screenshot.png) <!-- Replace with your screenshot if available -->
+## Design notes
 
----
+- Light "paper" palette with a single vermilion accent. Dark mode follows the
+  system preference.
+- Type: Newsreader for headings, Instrument Sans for text, DM Mono for labels,
+  all from Google Fonts.
+- Each project is presented like a figure in a report: the real screenshot,
+  numbered markers on the points worth discussing, and the role, data and
+  result beside it.
 
-## 💼 Features
+## Editing a project
 
-- 🎨 Clean and elegant UI/UX
-- 📱 Mobile responsive design
-- 🧠 Highlights skills, projects & resume
-- ✉️ Contact form integration
-- ⚡ Hosted on Vercel for fast performance
-- 🌙 Dark mode ready 
+Each project is an `<article class="case">` in `index.html`. To move a marker,
+change its `left` and `top` percentages (measured from the top-left of the
+image). Marker `n` pairs with the `n`th item in that project's notes list.
 
----
+## Running locally
 
-## 🛠 Tech Stack
-
-| Technology | Role                          |
-|------------|-------------------------------|
-| HTML5      | Markup                        |
-| CSS3       | Styling, layout & animations  |
-| JavaScript | Interactivity & functionality |
-| Vercel     | Hosting & continuous deploy   |
-
----
-
-## 🧰 Getting Started
-
-To run locally:
+Any static server works, for example:
 
 ```bash
-git clone https://github.com/LauhithN/portfolio-site.git
-cd portfolio-site
-open index.html
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000/. On Windows, `serve-local.ps1` does the same.

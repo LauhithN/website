@@ -9,6 +9,7 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const supportsFetch = () => typeof window.fetch === "function";
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -511,6 +512,28 @@
     $(".case-close", dialog)?.addEventListener("click", closeCase);
     dialog.addEventListener("cancel", (e) => { e.preventDefault(); closeCase(); });
     dialog.addEventListener("click", (e) => { if (e.target === dialog) closeCase(); });
+  }
+
+  /* ---------- GitHub cards: refresh "updated" dates from the public API ---------- */
+  const repoCards = $$("[data-repo]");
+  if (repoCards.length && supportsFetch() && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      fetch("https://api.github.com/users/LauhithN/repos?per_page=100", { headers: { Accept: "application/vnd.github+json" } })
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+        .then((list) => {
+          const fmt = new Intl.DateTimeFormat("en-CA", { month: "short", year: "numeric" });
+          list.forEach((r) => {
+            const card = repoCards.find((c) => c.dataset.repo === r.name);
+            if (!card) return;
+            const when = $(".repo-when", card);
+            if (when && r.pushed_at) when.textContent = `Updated ${fmt.format(new Date(r.pushed_at))}`;
+          });
+        })
+        .catch(() => {});
+    }, { rootMargin: "240px 0px" });
+    io.observe(repoCards[0]);
   }
 
   /* ---------- Footer year ---------- */

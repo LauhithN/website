@@ -491,6 +491,7 @@ body::before {
 }
 
 .section-head h2,
+.github-head h2,
 .about h2,
 .contact h2 {
   font-size: clamp(2rem, 5vw, 4.6rem);
@@ -670,6 +671,161 @@ body::before {
 
 @media (max-width: 860px) {
   .numbers .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- GitHub ---------- */
+
+.github {
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+  padding: clamp(5rem, 14vh, 10rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.github-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem 3rem;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+
+.github-head h2 { margin-top: 0.9rem; }
+
+.github-head .intro {
+  color: var(--fg-2);
+  max-width: 56ch;
+  margin-top: 1.25rem;
+  text-wrap: pretty;
+}
+
+.repos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.repo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  transition: transform 0.6s var(--ease), border-color 0.3s, background-color 0.3s;
+}
+
+.repo:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-2);
+  background: #19191d;
+}
+
+.repo.wide { grid-column: span 2; }
+
+.repo-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.repo-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--fg-2);
+}
+
+.repo-lang i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lang, var(--accent));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lang, var(--accent)) 22%, transparent);
+}
+
+.repo h3 {
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-stretch: 110%;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.repo h3 a { color: inherit; }
+
+/* The title link stretches over the whole card, so the card is a real link. */
+.repo h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.repo p {
+  color: var(--fg-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.repo-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.repo-foot .chips { margin: 0; }
+
+.repo .chip.live {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  border-color: rgba(182, 255, 92, 0.45);
+}
+
+.repo .chip.live .icon { width: 0.8em; height: 0.8em; }
+
+.repo .arrow {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  color: var(--fg);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.5s var(--ease);
+}
+
+.repo .arrow .icon { width: 1rem; height: 1rem; }
+
+.repo:hover .arrow {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.repo-stars[hidden] { display: none; }
+
+@media (max-width: 1024px) {
+  .repos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .github-head { grid-template-columns: 1fr; align-items: start; }
+  .repos { grid-template-columns: 1fr; }
+  .repo.wide { grid-column: auto; }
 }
 
 /* ---------- About ---------- */

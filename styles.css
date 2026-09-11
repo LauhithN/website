@@ -64,6 +64,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
   overflow-x: clip;
 }
 
@@ -188,7 +189,7 @@ body::before {
 
 .cursor-label {
   font-family: var(--mono);
-  font-size: 0.6875rem;
+  font-size: 0.5625rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent-ink);
@@ -197,16 +198,16 @@ body::before {
 }
 
 .cursor.is-link {
-  width: 52px;
-  height: 52px;
-  margin: -26px 0 0 -26px;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
   border-color: var(--accent);
 }
 
 .cursor.is-open {
-  width: 96px;
-  height: 96px;
-  margin: -48px 0 0 -48px;
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
   background: var(--accent);
   border-color: var(--accent);
 }
@@ -236,8 +237,8 @@ body::before {
 .nav.is-scrolled {
   background: rgba(10, 10, 11, 0.82);
   border-bottom-color: var(--line);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .nav.is-hidden { transform: translateY(-100%); }
@@ -318,6 +319,7 @@ body::before {
 .hero {
   position: relative;
   isolation: isolate;
+  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -516,7 +518,6 @@ body::before {
   overflow: hidden;
   transform-origin: 50% 0;
   transform: scale(calc(1 - var(--p, 0) * 0.06)) translateY(calc(var(--p, 0) * -2.5vh));
-  will-change: transform;
   box-shadow: 0 -12px 60px rgba(0, 0, 0, 0.4);
 }
 
@@ -710,8 +711,7 @@ body::before {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  padding: 1.5rem;
+  overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 22px;
@@ -721,10 +721,123 @@ body::before {
 .repo:hover {
   transform: translateY(-4px);
   border-color: var(--line-2);
-  background: #19191d;
 }
 
-.repo.wide { grid-column: span 2; }
+/* A soft spotlight that follows the cursor across the card. */
+.repo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 30%), rgba(182, 255, 92, 0.1), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.repo:hover::before { opacity: 1; }
+
+.repo.wide { grid-column: span 2; flex-direction: row; }
+
+.repo-visual {
+  position: relative;
+  flex: none;
+  height: 176px;
+  background: #0c0c0e;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.repo.wide .repo-visual {
+  width: 46%;
+  height: auto;
+  border-bottom: 0;
+  border-right: 1px solid var(--line);
+}
+
+.repo-visual.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  scale: 1.02;
+  transition: scale 1s var(--ease);
+}
+
+.repo:hover .repo-visual.shot img { scale: 1.08; }
+
+.repo-visual.code { padding: 1rem 1.25rem 0; }
+
+.repo-visual.code::before,
+.repo-visual.code::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.repo-visual.code::before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42%;
+  background: linear-gradient(transparent, #0c0c0e);
+}
+
+.repo-visual.code::after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 26%;
+  background: linear-gradient(90deg, transparent, #0c0c0e);
+}
+
+.repo-file {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--fg-3);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.repo-visual pre {
+  margin: 0;
+  font: 400 0.72rem/1.6 var(--mono);
+  color: var(--fg-2);
+  white-space: pre;
+  transition: transform 0.9s var(--ease);
+}
+
+.repo:hover .repo-visual pre { transform: translateY(-8px); }
+
+.repo-visual .ln {
+  display: block;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transition-delay: calc(var(--l, 0) * 45ms + 250ms);
+}
+
+.is-in .repo-visual .ln { opacity: 1; transform: none; }
+
+.repo-visual i { font-style: normal; }
+.repo-visual i.k { color: var(--fg); }
+.repo-visual i.s { color: var(--accent); }
+.repo-visual i.c { color: var(--fg-3); }
+
+.repo-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  min-width: 0;
+}
 
 .repo-top {
   display: flex;
@@ -746,7 +859,10 @@ body::before {
   border-radius: 50%;
   background: var(--lang, var(--accent));
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--lang, var(--accent)) 22%, transparent);
+  transition: box-shadow 0.4s;
 }
+
+.repo:hover .repo-lang i { box-shadow: 0 0 0 5px color-mix(in srgb, var(--lang, var(--accent)) 30%, transparent); }
 
 .repo h3 {
   font-size: clamp(1.25rem, 1.6vw, 1.5rem);
@@ -762,6 +878,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 3;
   border-radius: inherit;
 }
 
@@ -785,7 +902,7 @@ body::before {
 
 .repo .chip.live {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -816,8 +933,6 @@ body::before {
   transform: translate(2px, -2px);
 }
 
-.repo-stars[hidden] { display: none; }
-
 @media (max-width: 1024px) {
   .repos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -825,7 +940,8 @@ body::before {
 @media (max-width: 720px) {
   .github-head { grid-template-columns: 1fr; align-items: start; }
   .repos { grid-template-columns: 1fr; }
-  .repo.wide { grid-column: auto; }
+  .repo.wide { grid-column: auto; flex-direction: column; }
+  .repo.wide .repo-visual { width: auto; height: 176px; border-right: 0; border-bottom: 1px solid var(--line); }
 }
 
 /* ---------- About ---------- */
@@ -836,6 +952,8 @@ body::before {
   background: var(--bg);
   padding: clamp(5rem, 14vh, 10rem) 0;
   border-top: 1px solid var(--line);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
 }
 
 .about .grid {
@@ -924,6 +1042,8 @@ body::before {
   background: var(--bg);
   padding: clamp(6rem, 18vh, 12rem) 0 clamp(4rem, 10vh, 7rem);
   border-top: 1px solid var(--line);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
 }
 
 .contact h2 { margin: 1rem 0 2.5rem; }
@@ -1209,6 +1329,19 @@ dialog.case::backdrop {
   .nav { transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* Lite mode: set by script on low-memory or low-core devices, or when data saver
+   is on. Drops the effects that cost GPU memory or per-frame paint work. */
+.lite body::before { display: none; }
+.lite .nav.is-scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(10, 10, 11, 0.96); }
+.lite dialog.case::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(6, 6, 7, 0.86); }
+.lite .card { box-shadow: none; }
+.lite .card::after { display: none; }
+.lite .card-fig img { translate: none; }
+.lite .repo:hover { transform: none; }
+.lite .repo::before { display: none; }
+.lite .status i { animation: none; }
+.lite .scroll-hint::after { animation: none; }
 
 @media print {
   .nav, .progress, .cursor, .cursor-dot, #signal, .skip, body::before { display: none !important; }

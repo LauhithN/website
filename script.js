@@ -8,6 +8,15 @@
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
+
+  /* Lite mode for low-memory or low-core devices and data-saver connections.
+     The page keeps its layout; only the expensive effects are trimmed. */
+  const nav = window.navigator;
+  const lite = reduce
+    || (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4)
+    || (typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 4)
+    || !!(nav.connection && nav.connection.saveData);
+  if (lite) html.classList.add("lite");
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const supportsFetch = () => typeof window.fetch === "function";
   const $ = (s, r = document) => r.querySelector(s);
@@ -83,7 +92,7 @@
   }
 
   /* ---------- Scroll-linked state: nav, progress, pinned cards, word fill ---------- */
-  const nav = $("#nav");
+  const navEl = $("#nav");
   const progress = $(".progress");
   const stack = $(".stack");
   const cards = $$(".stack .card");
@@ -112,10 +121,10 @@
 
     if (progress) progress.style.transform = `scaleX(${(y / docH).toFixed(4)})`;
 
-    if (nav) {
-      nav.classList.toggle("is-scrolled", y > 40);
-      if (y > lastY + 4 && y > 240) nav.classList.add("is-hidden");
-      else if (y < lastY - 4 || y <= 240) nav.classList.remove("is-hidden");
+    if (navEl) {
+      navEl.classList.toggle("is-scrolled", y > 40);
+      if (y > lastY + 4 && y > 240) navEl.classList.add("is-hidden");
+      else if (y < lastY - 4 || y <= 240) navEl.classList.remove("is-hidden");
     }
     lastY = y;
 
@@ -181,7 +190,7 @@
   /* ---------- Inertia wheel scrolling (fine pointers only) ----------
      Native scrolling stays intact for keyboard, scrollbar, touch and anchors;
      only wheel input is eased, so sticky panels and observers keep working. */
-  if (finePointer && !reduce) {
+  if (finePointer && !lite) {
     let target = window.scrollY, current = target, animating = false;
     const maxY = () => Math.max(0, html.scrollHeight - window.innerHeight);
     const tick = () => {
@@ -206,7 +215,7 @@
   }
 
   /* ---------- Custom cursor and magnetic buttons (fine pointers only) ---------- */
-  if (finePointer && !reduce) {
+  if (finePointer && !lite) {
     html.classList.add("has-cursor");
     const dot = $(".cursor-dot"), ring = $(".cursor"), label = $(".cursor-label");
     let mx = -100, my = -100, rx = -100, ry = -100, raf = 0;
@@ -237,6 +246,14 @@
     document.addEventListener("mouseleave", () => { dot.style.opacity = "0"; ring.style.opacity = "0"; });
     document.addEventListener("mouseenter", () => { dot.style.opacity = "1"; ring.style.opacity = "1"; });
 
+    $$(".repo").forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", `${(e.clientX - r.left).toFixed(0)}px`);
+        el.style.setProperty("--my", `${(e.clientY - r.top).toFixed(0)}px`);
+      }, { passive: true });
+    });
+
     $$(".magnetic").forEach((el) => {
       el.addEventListener("mousemove", (e) => {
         const r = el.getBoundingClientRect();
@@ -257,9 +274,11 @@
     if (!ctx) return;
 
     const TEXT = "LAUHITH";
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, lite ? 1 : 1.5);
+    const BUDGET = lite ? 1600 : 4200;
     const mouse = { x: -9999, y: -9999, on: false };
     let W = 0, H = 0, pts = [], dotSize = 2, running = false, raf = 0, t0 = 0;
+    let idleFrames = 0, slowFrames = 0, lastFrame = 0, thinned = 0;
 
     const build = () => {
       W = hero.clientWidth; H = hero.clientHeight;
@@ -294,7 +313,7 @@
         }
       };
       sample();
-      while (targets.length / 2 > 5200) { gap += 1; sample(); }
+      while (targets.length / 2 > BUDGET) { gap += 1; sample(); }
       dotSize = Math.max(1.5, gap * 0.55);
 
       const n = targets.length / 2;
@@ -325,6 +344,7 @@
       const de = d * d * (3 - 2 * d);
       const R = 120, R2 = R * R;
       const useMouse = mouse.on && !reduce;
+      let energy = 0;
 
       for (const p of pts) {
         const tx = p.tx + (p.sx - p.tx) * de, ty = p.ty + (p.sy - p.ty) * de;
@@ -336,12 +356,28 @@
             ax += (dx / dist) * f; ay += (dy / dist) * f;
           }
         }
-        if (!reduce) { p.j += 0.02; ax += Math.cos(p.j * 3.1) * 0.02; ay += Math.sin(p.j * 2.3) * 0.02; }
         p.vx = (p.vx + ax) * damp; p.vy = (p.vy + ay) * damp;
         p.x += p.vx; p.y += p.vy;
+        energy += Math.abs(p.vx) + Math.abs(p.vy);
       }
 
       draw(de);
+
+      // Adaptive: if frames are consistently slow, halve the point count (at most twice).
+      if (lastFrame && now - lastFrame > 26) slowFrames += 1; else slowFrames = Math.max(0, slowFrames - 1);
+      lastFrame = now;
+      if (slowFrames > 12 && thinned < 2) {
+        pts = pts.filter((_, i) => i % 2 === 0);
+        dotSize *= 1.35;
+        thinned += 1;
+        slowFrames = 0;
+      }
+
+      // Idle: once the dots have settled and nothing is pushing them, stop drawing.
+      const settled = t > 2600 && energy / Math.max(1, pts.length) < 0.02;
+      if (settled) idleFrames += 1; else idleFrames = 0;
+      if (idleFrames > 30) { running = false; raf = 0; return; }
+
       raf = window.requestAnimationFrame(frame);
     };
 
@@ -355,29 +391,35 @@
       ctx.globalAlpha = 1;
     };
 
+    let visible = true;
     const start = () => {
-      if (running) return;
+      if (running || !visible || document.hidden) return;
       running = true;
+      idleFrames = 0;
+      lastFrame = 0;
       if (!t0) t0 = performance.now();
       raf = window.requestAnimationFrame(frame);
     };
     const stop = () => { running = false; if (raf) window.cancelAnimationFrame(raf); raf = 0; };
+    const wake = () => { if (!running) start(); };
 
     const toLocal = (cx, cy) => {
       const r = hero.getBoundingClientRect();
       mouse.x = cx - r.left; mouse.y = cy - r.top; mouse.on = true;
+      if (mouse.y >= 0 && mouse.y <= H) wake();
     };
     window.addEventListener("mousemove", (e) => toLocal(e.clientX, e.clientY), { passive: true });
     hero.addEventListener("touchmove", (e) => { const t = e.touches[0]; if (t) toLocal(t.clientX, t.clientY); }, { passive: true });
     hero.addEventListener("touchend", () => { mouse.on = false; }, { passive: true });
     document.addEventListener("mouseleave", () => { mouse.on = false; });
+    window.addEventListener("scroll", () => { if (visible) wake(); }, { passive: true });
 
     let rt = 0;
-    window.addEventListener("resize", () => { window.clearTimeout(rt); rt = window.setTimeout(build, 150); });
+    window.addEventListener("resize", () => { window.clearTimeout(rt); rt = window.setTimeout(() => { build(); wake(); }, 150); });
 
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) start(); else stop(); });
+        entries.forEach((e) => { visible = e.isIntersecting; if (visible) start(); else stop(); });
       }, { threshold: 0.02 }).observe(hero);
     } else {
       start();
@@ -392,6 +434,7 @@
     // Screenshot harness only: jump straight to the settled state.
     if (window.location.search.includes("harness=1")) {
       window.__settle = () => { stop(); pts.forEach((p) => { p.x = p.tx; p.y = p.ty; p.vx = 0; p.vy = 0; }); draw(0); };
+      window.__lite = lite;
     }
   };
   initSignal();

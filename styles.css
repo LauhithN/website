@@ -617,8 +617,9 @@ body::before {
 }
 
 .card-fig.left img { object-position: left top; }
-.card-fig.fit img { object-fit: contain; }
+.card-fig.fit img { object-fit: contain; scale: 1; }
 .card:hover .card-fig img { scale: 1.1; }
+.card:hover .card-fig.fit img { scale: 1.03; }
 
 @media (max-width: 860px) {
   .card {

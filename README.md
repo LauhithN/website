@@ -1,44 +1,39 @@
-# lauhith.dev, sort of
+# Lauhith Natarajan — portfolio
 
-Personal site for Lauhith Natarajan, business and data analyst in Toronto.
+Personal website for a business and data analyst in Toronto.
 
 Live: https://website-two-sepia-48.vercel.app/
 
-## What it is
+## Structure
 
-One HTML page, one stylesheet, one small script. No build step, no framework.
+The site is static: HTML, CSS and a small dependency-free script. There is no installation or build step.
 
-- `index.html` is the content. Edit text there.
-- `styles.css` holds the design tokens (colours, type, spacing) at the top, then layout.
-- `script.js` adds the small touches: header hairline on scroll, reveal on scroll,
-  current-section highlight in the nav, and the numbered markers on each figure.
-  Everything works with JavaScript off.
-- `assets/work/` holds the project figures. They are real screenshots of the
-  dashboards and apps, saved as WebP at 1400px wide.
-- `assets/og.png` is the social preview image.
+- `index.html`: profile, four projects, experience, contact and page metadata.
+- `styles.css`: shared light/dark colour tokens, typography, responsive layouts and print styles.
+- `script.js`: current-section navigation, restrained entry motion and accessible dashboard annotations.
+- `assets/work/`: original dashboard and app screenshots in WebP format.
+- `assets/og.png`: existing social preview, preserved with its metadata.
 
-## Design notes
+## Design
 
-- Light "paper" palette with a single vermilion accent. Dark mode follows the
-  system preference.
-- Type: Newsreader for headings, Instrument Sans for text, DM Mono for labels,
-  all from Google Fonts.
-- Each project is presented like a figure in a report: the real screenshot,
-  numbered markers on the points worth discussing, and the role, data and
-  result beside it.
+A navy and blue editorial palette, Schibsted Grotesk body text and an Instrument Serif headline. The first screen features a real dashboard. Projects show their summary, findings and links up front, with role, data and annotated notes in native expandable details. Every screenshot has a full-size image link.
 
-## Editing a project
+Light and dark modes follow the system setting. Motion respects reduced-motion preferences. Navigation, project details, resume and contact links work without JavaScript; image annotation buttons appear only when their handlers are ready. Printing with JavaScript includes all project notes and restores the reader's expanded sections afterward.
 
-Each project is an `<article class="case">` in `index.html`. To move a marker,
-change its `left` and `top` percentages (measured from the top-left of the
-image). Marker `n` pairs with the `n`th item in that project's notes list.
+## Editing projects
 
-## Running locally
+Each project is an `<article class="case">`. Preserve its ID, heading ID and link targets. Marker positions use percentages relative to the screenshot; marker 1 corresponds to the first `.notes li`. Keep the marker's `aria-describedby` pointed to its note and `aria-controls` pointed to its project's `<details>` element.
 
-Any static server works, for example:
+Use the existing project evidence when editing results. Distinguish projected benefits from measured outcomes.
 
-```bash
+## Local preview
+
+```sh
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000/. On Windows, `serve-local.ps1` does the same.
+Open http://localhost:8000/. `serve-local.ps1` is also available for Windows.
+
+## Interaction checks
+
+Run `node tests/interactions.cjs` to check annotation, navigation, reduced-motion, fallback and print behavior in a small DOM stub. These checks do not replace browser visual testing.

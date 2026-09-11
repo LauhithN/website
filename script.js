@@ -3,16 +3,16 @@
 (() => {
   "use strict";
 
-  const root = document.documentElement;
-  root.classList.add("js");
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const supportsObserver = "IntersectionObserver" in window;
 
   /* Header hairline appears once the page has scrolled. */
   const header = document.querySelector(".site-header");
   if (header) {
-    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    const onScroll = () =>
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
   }
@@ -31,13 +31,15 @@
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
     );
     revealEls.forEach((el) => io.observe(el));
   }
 
   /* Mark the section currently in view in the nav. */
-  const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
+  const navLinks = Array.from(
+    document.querySelectorAll('.site-nav a[href^="#"]'),
+  );
   const sections = navLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
@@ -58,9 +60,20 @@
           if (entry.isIntersecting) setCurrent(entry.target.id);
         });
       },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 },
     );
     sections.forEach((section) => so.observe(section));
+    // Do not leave the last section highlighted after returning to the hero.
+    const hero = document.querySelector(".hero-main");
+    if (hero) {
+      const heroObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) setCurrent(null);
+        },
+        { threshold: 0.5 },
+      );
+      heroObserver.observe(hero);
+    }
   }
 
   /* Annotated figures: hovering or focusing a marker highlights its note,
@@ -69,6 +82,15 @@
   document.querySelectorAll(".case").forEach((caseEl) => {
     const marks = Array.from(caseEl.querySelectorAll(".mark"));
     const notes = Array.from(caseEl.querySelectorAll(".notes li"));
+    const details = caseEl.querySelector(".case-details");
+    if (details) {
+      const syncExpanded = () =>
+        marks.forEach((mark) => {
+          mark.setAttribute("aria-expanded", String(details.open));
+        });
+      syncExpanded();
+      details.addEventListener("toggle", syncExpanded);
+    }
 
     const setActive = (index, on) => {
       marks[index]?.classList.toggle("is-active", on);
@@ -86,10 +108,18 @@
         setActive(i, true);
         const note = notes[i];
         if (!note) return;
+        if (details) details.open = true;
+        note.focus({ preventScroll: true });
+        setActive(i, true);
         const rect = note.getBoundingClientRect();
-        const visible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        const headerHeight = header?.getBoundingClientRect().height || 0;
+        const visible =
+          rect.top >= headerHeight + 16 && rect.bottom <= window.innerHeight;
         if (!visible) {
-          note.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+          note.scrollIntoView({
+            block: "center",
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
         }
       });
     });
@@ -98,6 +128,25 @@
       note.addEventListener("mouseenter", () => setActive(i, true));
       note.addEventListener("mouseleave", () => setActive(i, false));
     });
+    // Decorative markers become controls only after their handlers exist.
+    caseEl.classList.add("markers-ready");
+  });
+
+  // Include the expanded notes when printing, then restore the reader's state.
+  let printDetails = [];
+  window.addEventListener("beforeprint", () => {
+    printDetails = Array.from(
+      document.querySelectorAll(".case-details:not([open])"),
+    );
+    printDetails.forEach((details) => {
+      details.open = true;
+    });
+  });
+  window.addEventListener("afterprint", () => {
+    printDetails.forEach((details) => {
+      details.open = false;
+    });
+    printDetails = [];
   });
 
   /* Footer year. */

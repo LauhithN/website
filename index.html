@@ -4,15 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lauhith Natarajan — Business &amp; Data Analyst, Toronto</title>
-  <meta name="description" content="Business and data analyst in Toronto. Requirements, SQL, Tableau and Power BI dashboards, and the written recommendation that goes with them. Selected work, background and contact.">
+  <meta name="description" content="Business and data analyst in Toronto. Noise in, signal out: requirements, SQL, Tableau and Power BI dashboards, and the recommendation that goes with them.">
   <meta name="author" content="Lauhith Natarajan">
   <link rel="canonical" href="https://website-two-sepia-48.vercel.app/">
-  <meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#151614" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0a0a0b">
 
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Lauhith Natarajan — Business &amp; Data Analyst, Toronto">
-  <meta property="og:description" content="Analysis that ends in a decision. Dashboards in Tableau and Power BI, SQL and Python, and the recommendation that goes with them.">
+  <meta property="og:description" content="Noise in. Signal out. Dashboards in Tableau and Power BI, SQL and Python, and the recommendation that goes with them.">
   <meta property="og:url" content="https://website-two-sepia-48.vercel.app/">
   <meta property="og:image" content="https://website-two-sepia-48.vercel.app/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -23,9 +22,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 
   <script type="application/ld+json">
@@ -50,26 +48,24 @@
     <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   </svg>
 
-  <header class="site-header">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+  <header class="nav" id="nav">
     <div class="wrap">
-      <a class="brand quiet" href="#top" aria-label="Lauhith Natarajan, home">
-        <svg class="mark-logo" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="7" fill="var(--ink)"/>
-          <path d="M7 22l6-7 5 4 7-10" fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="25" cy="9" r="2.6" fill="var(--hl)"/>
-        </svg>
+      <a class="brand" href="#top" aria-label="Lauhith Natarajan, home">
+        <span class="mark-logo" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 23l7-8 5 4 8-11" fill="none" stroke="#0a0a0b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span>Lauhith Natarajan</span>
       </a>
-      <nav class="site-nav" aria-label="Sections">
-        <ul>
-          <li><a class="quiet" href="#work">Work</a></li>
-          <li><a class="quiet" href="#about">About</a></li>
-          <li><a class="quiet" href="#background">Background</a></li>
-          <li><a class="quiet" href="#contact">Contact</a></li>
-          <li class="nav-resume"><a class="quiet" href="Lauhith_Natarajan_Final_Resume_One_Page.pdf" target="_blank" rel="noopener">Resume <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
-        </ul>
+      <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="pill" href="Lauhith_Natarajan_Final_Resume_One_Page.pdf" target="_blank" rel="noopener">Resume <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
       </nav>
     </div>
   </header>
@@ -77,54 +73,55 @@
   <main id="main">
 
     <section class="hero" id="top" aria-labelledby="headline">
+      <canvas id="signal" aria-hidden="true"></canvas>
       <div class="wrap">
-        <div class="hero-main">
-        <p class="label eyebrow">Lauhith Natarajan &middot; Business &amp; Data Analyst &middot; Toronto</p>
-        <h1 id="headline">Analysis that ends in a <mark>decision</mark>.</h1>
-        <p class="lede">I gather the requirements, clean the data, build the dashboard in Tableau or Power&nbsp;BI, and write the recommendation that goes with it. Currently looking for a Business or Data Analyst role in Toronto.</p>
-        <div class="hero-links">
-          <a class="arrow-link quiet" href="#work">Selected work <svg class="icon down" aria-hidden="true"><use href="#i-down"/></svg></a>
-          <a class="arrow-link quiet" href="Lauhith_Natarajan_Final_Resume_One_Page.pdf" target="_blank" rel="noopener">Resume, one page PDF <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-          <a class="arrow-link quiet" href="mailto:lauhithn@gmail.com">Email me <svg class="icon right" aria-hidden="true"><use href="#i-right"/></svg></a>
+        <div class="hero-inner">
+          <p class="mono eyebrow reveal" style="--i:0">Lauhith Natarajan &middot; Business &amp; Data Analyst &middot; Toronto</p>
+          <h1 class="display" id="headline" data-split>Noise in.<br><span class="ac">Signal out.</span></h1>
+          <p class="lede reveal" style="--i:5">I gather the requirements, clean the data, build the dashboard in Tableau or Power&nbsp;BI, and write the recommendation that goes with it. Currently looking for a Business or Data Analyst role in Toronto.</p>
+          <div class="cta reveal" style="--i:7">
+            <a class="btn btn-solid magnetic" href="#work">See the work <svg class="icon down" aria-hidden="true"><use href="#i-down"/></svg></a>
+            <a class="btn btn-ghost magnetic" href="mailto:lauhithn@gmail.com">Email me <svg class="icon right" aria-hidden="true"><use href="#i-right"/></svg></a>
+          </div>
         </div>
+        <div class="hero-foot reveal" style="--i:9">
+          <span class="mono">Toronto <time id="clock">--:--</time></span>
+          <span class="mono status"><i aria-hidden="true"></i>Open to BA / DA roles</span>
+          <span class="mono scroll-hint" aria-hidden="true">Scroll</span>
         </div>
-
-        <dl class="facts">
-          <div>
-            <dt class="label">Based in</dt>
-            <dd>Toronto, Ontario</dd>
-          </div>
-          <div>
-            <dt class="label">Toolkit</dt>
-            <dd>SQL, Python, Tableau, Power BI, Excel</dd>
-          </div>
-          <div>
-            <dt class="label">Education</dt>
-            <dd>Postgraduate diplomas in Business Analytics and International Business, Seneca College</dd>
-          </div>
-          <div>
-            <dt class="label">Currently</dt>
-            <dd>Open to Business Analyst and Data Analyst roles</dd>
-          </div>
-        </dl>
       </div>
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
-      <div class="wrap section-grid">
-        <div class="section-label">
-          <p class="label">Selected work</p>
+    <section class="manifesto" aria-label="How I work">
+      <div class="wrap">
+        <p class="fill" data-fill>Every project here started as a <em>question</em>, not a dataset. I frame it with the people who will use the answer, clean and model the data, ship the dashboard, and write the <em>one sentence</em> that tells you what to do next.</p>
+      </div>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="mono reveal">01 &mdash; Selected work</p>
+          <h2 id="work-title" data-split>Four projects, built end to end.</h2>
         </div>
-        <div>
-          <h2 class="section-title" id="work-title">Four projects, each built end to end.</h2>
-          <p class="section-intro">Every one of these started as a question, not a dataset. The figures are the real dashboards and apps, not mockups. The numbered markers are the points I would walk a manager through in a review: hover or tap one to read the note.</p>
 
-          <div class="work">
+        <div class="stack">
 
-            <article class="case reveal" id="work-restaurant">
+          <article class="card" data-cursor="open" data-cursor-label="Open" id="case-restaurant">
+            <div class="card-text">
+              <div class="card-idx mono"><span><b>01</b> &nbsp;Restaurant performance</span><span>2025 &middot; Tableau, Excel</span></div>
+              <h3>Restaurant Performance Dashboard</h3>
+              <p class="summary">Three months of orders, revenue, customer ratings and staff data, reduced to one executive view: what sold, who sold it, and which days need explaining.</p>
+              <div class="chips"><span class="chip ac">42% of revenue from one category</span><span class="chip">100 orders</span><span class="chip">6 KPIs</span></div>
+              <button class="card-open" type="button">Open the case study <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+            <div class="card-fig fit"><img src="assets/work/restaurant-dashboard.webp" width="1400" height="1120" alt="Restaurant Performance Dashboard in Tableau" loading="lazy" decoding="async"></div>
+
+            <div class="case-content" hidden>
               <div class="case-head">
-                <p class="label"><b class="chip">Fig. 01</b>Restaurant performance</p>
-                <p class="label">2025 &middot; Tableau, Excel</p>
+                <p class="mono">Fig. 01 &middot; Restaurant performance &middot; 2025 &middot; Tableau, Excel</p>
+                <h2>Restaurant Performance Dashboard</h2>
+                <p class="summary">Three months of orders, revenue, customer ratings and staff data for a restaurant, reduced to one executive view: what sold, who sold it, and which days need explaining.</p>
               </div>
               <figure class="figure">
                 <img src="assets/work/restaurant-dashboard.webp" width="1400" height="1120" alt="Tableau dashboard titled Restaurant Performance Dashboard. Four KPI tiles read 100 orders, $4,657.59 total revenue, 3.9 average rating and 30 customers. Below them a daily revenue line chart for February to April with outlier days circled, a bubble chart of revenue by waiter, a bar chart of customer rating distribution, and a ranked bar chart of top-selling menu items led by Caesar salad." decoding="async">
@@ -135,9 +132,7 @@
               </figure>
               <div class="case-body">
                 <div>
-                  <h3>Restaurant Performance Dashboard</h3>
-                  <p class="summary">Three months of orders, revenue, customer ratings and staff data for a restaurant, reduced to one executive view: what sold, who sold it, and which days need explaining.</p>
-                  <p class="label notes-title">Notes on the figure</p>
+                  <p class="mono notes-title">Notes on the figure</p>
                   <ol class="notes">
                     <li id="r-n1">Headline numbers first: 100 orders, $4,657.59 in revenue, a 3.9 average rating, 30 customers. The four figures a manager asks for before anything else.</li>
                     <li id="r-n2">Daily revenue with the outlier days circled, so the conversation starts with the dates that break the pattern.</li>
@@ -146,39 +141,40 @@
                   </ol>
                 </div>
                 <dl class="meta">
-                  <dt class="label">Role</dt>
-                  <dd>Framed the business questions, cleaned the data in Excel, modelled it as a star schema, designed the dashboard</dd>
-                  <dt class="label">Data</dt>
-                  <dd>100 orders, 30 customers, February to April</dd>
-                  <dt class="label">Result</dt>
-                  <dd class="result">One menu category was driving 42% of revenue, and staff performance gaps were visible enough to back recommendations on pricing, incentives and scheduling.</dd>
-                  <dt class="label">Links</dt>
-                  <dd>
-                    <div class="links">
-                      <a class="quiet" href="https://public.tableau.com/views/Restaurant_dashboard_17444671317480/Dashboard1" target="_blank" rel="noopener">Tableau Public <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                      <a class="quiet" href="https://github.com/LauhithN/Restaurant-performance" target="_blank" rel="noopener">GitHub <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                    </div>
-                  </dd>
+                  <dt class="mono">Role</dt><dd>Framed the business questions, cleaned the data in Excel, modelled it as a star schema, designed the dashboard</dd>
+                  <dt class="mono">Data</dt><dd>100 orders, 30 customers, February to April</dd>
+                  <dt class="mono">Result</dt><dd class="result">One menu category was driving 42% of revenue, and staff performance gaps were visible enough to back recommendations on pricing, incentives and scheduling.</dd>
+                  <dt class="mono">Links</dt><dd><div class="links"><a href="https://public.tableau.com/views/Restaurant_dashboard_17444671317480/Dashboard1" target="_blank" rel="noopener">Tableau Public <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a><a href="https://github.com/LauhithN/Restaurant-performance" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></div></dd>
                 </dl>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="case reveal" id="work-personal-finance">
+          <article class="card" data-cursor="open" data-cursor-label="Open" id="case-personal-finance">
+            <div class="card-text">
+              <div class="card-idx mono"><span><b>02</b> &nbsp;Personal transactions</span><span>2025 &middot; Tableau, Excel</span></div>
+              <h3>Personal Transactions Dashboard</h3>
+              <p class="summary">Two years of transactions, cleaned and categorized in Excel, then modelled in Tableau to show where the money goes and how savings move.</p>
+              <div class="chips"><span class="chip ac">61% of non-essential spend in a few categories</span><span class="chip">806 transactions</span></div>
+              <button class="card-open" type="button">Open the case study <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+            <div class="card-fig fit"><img src="assets/work/personal-finance-tableau.webp" width="1400" height="1118" alt="Personal Transactions Dashboard in Tableau" loading="lazy" decoding="async"></div>
+
+            <div class="case-content" hidden>
               <div class="case-head">
-                <p class="label"><b class="chip">Fig. 02</b>Personal transactions</p>
-                <p class="label">2025 &middot; Tableau, Excel</p>
+                <p class="mono">Fig. 02 &middot; Personal transactions &middot; 2025 &middot; Tableau, Excel</p>
+                <h2>Personal Transactions Dashboard</h2>
+                <p class="summary">Two years of personal transactions, cleaned and categorized in Excel and then modelled in Tableau to show where the money goes and how savings move over time.</p>
               </div>
               <figure class="figure">
-                <img src="assets/work/personal-finance-tableau.webp" width="1400" height="1118" alt="Tableau dashboard of personal transactions. Left column: a spending-by-account bar and line chart, a category breakdown pie chart, tiles reading total income 124,270 and total transactions 806, and a monthly transaction volume line. Right: a transaction type breakdown line chart from January 2018 to September 2019 with two sharp spikes in May 2018 and June 2019." loading="lazy" decoding="async">
+                <img src="assets/work/personal-finance-tableau.webp" width="1400" height="1118" alt="Tableau dashboard of personal transactions. Left column: a spending-by-account bar and line chart, a category breakdown pie chart, tiles reading total income 124,270 and total transactions 806, and a monthly transaction volume line. Right: a transaction type breakdown line chart from January 2018 to September 2019 with two sharp spikes in May 2018 and June 2019." decoding="async">
                 <button class="mark" type="button" style="left:18.7%;top:57.5%" aria-describedby="p-n1">1</button>
                 <button class="mark" type="button" style="left:94.7%;top:16.6%" aria-describedby="p-n2">2</button>
                 <button class="mark" type="button" style="left:33.6%;top:42.1%" aria-describedby="p-n3">3</button>
               </figure>
               <div class="case-body">
                 <div>
-                  <h3>Personal Transactions Dashboard</h3>
-                  <p class="summary">Two years of personal transactions, cleaned and categorized in Excel and then modelled in Tableau to show where the money goes and how savings move over time.</p>
-                  <p class="label notes-title">Notes on the figure</p>
+                  <p class="mono notes-title">Notes on the figure</p>
                   <ol class="notes">
                     <li id="p-n1">806 transactions and $124,270 of income across 2018 and 2019, categorized before they reached Tableau.</li>
                     <li id="p-n2">Two spikes, May 2018 and June 2019, that break an otherwise steady monthly pattern. The first thing to investigate.</li>
@@ -186,39 +182,40 @@
                   </ol>
                 </div>
                 <dl class="meta">
-                  <dt class="label">Role</dt>
-                  <dd>Data cleaning and categorization, data model, dashboard build</dd>
-                  <dt class="label">Data</dt>
-                  <dd>806 transactions over 24 months</dd>
-                  <dt class="label">Result</dt>
-                  <dd class="result">Spending concentration identified in a handful of categories (61% of non-essential expenses), with projected savings improved by 15%.</dd>
-                  <dt class="label">Links</dt>
-                  <dd>
-                    <div class="links">
-                      <a class="quiet" href="https://public.tableau.com/views/PersonalFinance_17442150744700/Dashboard1" target="_blank" rel="noopener">Tableau Public <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                      <a class="quiet" href="https://github.com/LauhithN/Personal-Finances" target="_blank" rel="noopener">GitHub <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                    </div>
-                  </dd>
+                  <dt class="mono">Role</dt><dd>Data cleaning and categorization, data model, dashboard build</dd>
+                  <dt class="mono">Data</dt><dd>806 transactions over 24 months</dd>
+                  <dt class="mono">Result</dt><dd class="result">Spending concentration identified in a handful of categories (61% of non-essential expenses), with projected savings improved by 15%.</dd>
+                  <dt class="mono">Links</dt><dd><div class="links"><a href="https://public.tableau.com/views/PersonalFinance_17442150744700/Dashboard1" target="_blank" rel="noopener">Tableau Public <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a><a href="https://github.com/LauhithN/Personal-Finances" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></div></dd>
                 </dl>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="case reveal" id="work-finance-app">
+          <article class="card" data-cursor="open" data-cursor-label="Open" id="case-finance-app">
+            <div class="card-text">
+              <div class="card-idx mono"><span><b>03</b> &nbsp;Finance dashboard, in the browser</span><span>2025 &middot; JavaScript</span></div>
+              <h3>Personal Finance Dashboard, as a web app</h3>
+              <p class="summary">A finance tracker with no backend: expenses, savings goals, investments, bills and budget, recalculated live and kept in the browser between visits.</p>
+              <div class="chips"><span class="chip ac">22% over-budget pattern surfaced</span><span class="chip">1,200+ transactions</span></div>
+              <button class="card-open" type="button">Open the case study <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+            <div class="card-fig left"><img src="assets/work/finance-dashboard-app.webp" width="1400" height="768" alt="Personal Finance Dashboard web app" loading="lazy" decoding="async"></div>
+
+            <div class="case-content" hidden>
               <div class="case-head">
-                <p class="label"><b class="chip">Fig. 03</b>Finance dashboard, in the browser</p>
-                <p class="label">2025 &middot; JavaScript, HTML, CSS</p>
+                <p class="mono">Fig. 03 &middot; Finance dashboard, in the browser &middot; 2025 &middot; JavaScript, HTML, CSS</p>
+                <h2>Personal Finance Dashboard, as a web app</h2>
+                <p class="summary">A single-page finance tracker with no backend: expenses, savings goals, investments, bills and a budget view, recalculated live from whatever you enter and kept in the browser between visits.</p>
               </div>
               <figure class="figure">
-                <img src="assets/work/finance-dashboard-app.webp" width="1400" height="768" alt="Screenshot of a web app titled Finance Dashboard with navigation for Expenses, Savings Goals, Investments, Bills and Budget. An expense-tracking panel shows a pie chart by category (food, rent, utilities, entertainment, transport, other) above a table of transactions with category, description, amount and date." loading="lazy" decoding="async">
+                <img src="assets/work/finance-dashboard-app.webp" width="1400" height="768" alt="Screenshot of a web app titled Finance Dashboard with navigation for Expenses, Savings Goals, Investments, Bills and Budget. An expense-tracking panel shows a pie chart by category above a table of transactions with category, description, amount and date." decoding="async">
                 <button class="mark" type="button" style="left:53.4%;top:3.0%" aria-describedby="f-n1">1</button>
                 <button class="mark" type="button" style="left:38.9%;top:31.7%" aria-describedby="f-n2">2</button>
                 <button class="mark" type="button" style="left:84%;top:47.9%" aria-describedby="f-n3">3</button>
               </figure>
               <div class="case-body">
                 <div>
-                  <h3>Personal Finance Dashboard, as a web app</h3>
-                  <p class="summary">A single-page finance tracker with no backend: expenses, savings goals, investments, bills and a budget view, recalculated live from whatever you enter and kept in the browser between visits.</p>
-                  <p class="label notes-title">Notes on the figure</p>
+                  <p class="mono notes-title">Notes on the figure</p>
                   <ol class="notes">
                     <li id="f-n1">Five views, one page: expenses, savings goals, investments, bills and budget.</li>
                     <li id="f-n2">The category split is recalculated on every entry, so the chart is never stale.</li>
@@ -226,169 +223,110 @@
                   </ol>
                 </div>
                 <dl class="meta">
-                  <dt class="label">Role</dt>
-                  <dd>Interface design and front-end build</dd>
-                  <dt class="label">Data</dt>
-                  <dd>1,200+ transactions and savings goals tracked</dd>
-                  <dt class="label">Result</dt>
-                  <dd class="result">Surfaced overspending patterns running 22% over budget, with the fix visible on the same screen as the problem.</dd>
-                  <dt class="label">Links</dt>
-                  <dd>
-                    <div class="links">
-                      <a class="quiet" href="https://finance-dashboard-theta-rouge.vercel.app/" target="_blank" rel="noopener">Live app <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                      <a class="quiet" href="https://github.com/LauhithN/Finance-Dashboard" target="_blank" rel="noopener">GitHub <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                    </div>
-                  </dd>
+                  <dt class="mono">Role</dt><dd>Interface design and front-end build</dd>
+                  <dt class="mono">Data</dt><dd>1,200+ transactions and savings goals tracked</dd>
+                  <dt class="mono">Result</dt><dd class="result">Surfaced overspending patterns running 22% over budget, with the fix visible on the same screen as the problem.</dd>
+                  <dt class="mono">Links</dt><dd><div class="links"><a href="https://finance-dashboard-theta-rouge.vercel.app/" target="_blank" rel="noopener">Live app <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a><a href="https://github.com/LauhithN/Finance-Dashboard" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></div></dd>
                 </dl>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="case reveal" id="work-blog">
+          <article class="card" data-cursor="open" data-cursor-label="Open" id="case-blog">
+            <div class="card-text">
+              <div class="card-idx mono"><span><b>04</b> &nbsp;Writing</span><span>2025 &middot; HTML, CSS, JS</span></div>
+              <h3>Business Analytics Blog</h3>
+              <p class="summary">Plain-language explainers on analysis, visualization and BI, written for the non-technical readers I usually end up presenting to.</p>
+              <div class="chips"><span class="chip ac">Writing</span><span class="chip">4 categories</span></div>
+              <button class="card-open" type="button">Open the case study <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+            <div class="card-fig left"><img src="assets/work/analytics-blog.webp" width="1400" height="828" alt="Business Analytics Blog" loading="lazy" decoding="async"></div>
+
+            <div class="case-content" hidden>
               <div class="case-head">
-                <p class="label"><b class="chip">Fig. 04</b>Writing</p>
-                <p class="label">2025 &middot; HTML, CSS, JavaScript</p>
+                <p class="mono">Fig. 04 &middot; Writing &middot; 2025 &middot; HTML, CSS, JavaScript</p>
+                <h2>Business Analytics Blog</h2>
+                <p class="summary">Short written explainers on analysis, visualization and BI, aimed at the non-technical readers I usually end up presenting to.</p>
               </div>
               <figure class="figure">
-                <img src="assets/work/analytics-blog.webp" width="1400" height="828" alt="Screenshot of a blog titled Business Analytics Portfolio with category filters for data analysis, data visualization, predictive analytics and business intelligence, a post titled Introduction to Business Analytics, and a sidebar listing popular posts." loading="lazy" decoding="async">
+                <img src="assets/work/analytics-blog.webp" width="1400" height="828" alt="Screenshot of a blog titled Business Analytics Portfolio with category filters for data analysis, data visualization, predictive analytics and business intelligence, a post titled Introduction to Business Analytics, and a sidebar listing popular posts." decoding="async">
                 <button class="mark" type="button" style="left:61.1%;top:42.3%" aria-describedby="b-n1">1</button>
                 <button class="mark" type="button" style="left:48.6%;top:71.4%" aria-describedby="b-n2">2</button>
               </figure>
               <div class="case-body">
                 <div>
-                  <h3>Business Analytics Blog</h3>
-                  <p class="summary">Short written explainers on analysis, visualization and BI, aimed at the non-technical readers I usually end up presenting to.</p>
-                  <p class="label notes-title">Notes on the figure</p>
+                  <p class="mono notes-title">Notes on the figure</p>
                   <ol class="notes">
                     <li id="b-n1">Posts are filed under data analysis, visualization, predictive analytics and business intelligence.</li>
                     <li id="b-n2">Each post is a plain-language explainer, written to be read in a few minutes.</li>
                   </ol>
                 </div>
                 <dl class="meta">
-                  <dt class="label">Role</dt>
-                  <dd>Writing, site design and build</dd>
-                  <dt class="label">Why</dt>
-                  <dd>Explaining a method clearly is most of the job. This is where I practise it.</dd>
-                  <dt class="label">Links</dt>
-                  <dd>
-                    <div class="links">
-                      <a class="quiet" href="https://portfolio-blog-red.vercel.app/" target="_blank" rel="noopener">Read the blog <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                      <a class="quiet" href="https://github.com/LauhithN/portfolio-blog" target="_blank" rel="noopener">GitHub <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-                    </div>
-                  </dd>
+                  <dt class="mono">Role</dt><dd>Writing, site design and build</dd>
+                  <dt class="mono">Why</dt><dd>Explaining a method clearly is most of the job. This is where I practise it.</dd>
+                  <dt class="mono">Links</dt><dd><div class="links"><a href="https://portfolio-blog-red.vercel.app/" target="_blank" rel="noopener">Read the blog <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a><a href="https://github.com/LauhithN/portfolio-blog" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a></div></dd>
                 </dl>
               </div>
-            </article>
+            </div>
+          </article>
 
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about" aria-labelledby="about-title">
-      <div class="wrap section-grid">
-        <div class="section-label">
-          <p class="label">About</p>
+    <section class="numbers" aria-label="By the numbers">
+      <div class="wrap">
+        <p class="mono reveal">By the numbers, from the projects above</p>
+        <div class="grid">
+          <div class="stat reveal" style="--i:1"><div class="num" data-count="806">0</div><p>transactions cleaned, categorized and modelled for the personal finance dashboard</p></div>
+          <div class="stat reveal" style="--i:2"><div class="num" data-count="42" data-suffix="%">0%</div><p>of restaurant revenue traced to a single menu category</p></div>
+          <div class="stat reveal" style="--i:3"><div class="num" data-count="22" data-suffix="%">0%</div><p>over-budget spending pattern surfaced in the finance app</p></div>
+          <div class="stat reveal" style="--i:4"><div class="num" data-count="15" data-suffix="%">0%</div><p>improvement in projected savings after the analysis</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap grid">
+        <div class="sticky">
+          <p class="mono reveal">02 &mdash; About</p>
+          <h2 id="about-title" data-split>The dashboard is the easy part.</h2>
         </div>
         <div class="reveal">
-          <h2 class="section-title" id="about-title">The dashboard is the easy part.</h2>
           <div class="prose">
             <p>I trained in business analytics and international business at Seneca College in Toronto, after two analyst internships in Chennai where most of the work was market research, competitor analysis and reporting for senior management.</p>
             <p>Since then I have built analytics projects end to end: framing the question with the people who will use the answer, cleaning and modelling the data in SQL and Excel, and shipping dashboards in Tableau and Power BI with a written recommendation attached.</p>
-            <p class="pull"><mark>A dashboard nobody reads is a spreadsheet with better fonts.</mark> I try to state the finding in one sentence, show the number that supports it, and make the next step obvious.</p>
+            <p class="pull">A dashboard nobody reads is a spreadsheet with better fonts. I state the finding in one sentence, show the number that supports it, and make the next step obvious.</p>
           </div>
 
           <dl class="toolkit">
-            <div class="row">
-              <dt class="label">Analysis &amp; BI</dt>
-              <dd>SQL (joins, CTEs, window functions), Tableau, Power BI, Excel (pivot tables, what-if analysis)</dd>
-            </div>
-            <div class="row">
-              <dt class="label">Programming</dt>
-              <dd>Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, Plotly), R, Jupyter notebooks</dd>
-            </div>
-            <div class="row">
-              <dt class="label">Methods</dt>
-              <dd>Exploratory analysis, data cleaning and validation, ETL, regression, clustering, forecasting, A/B testing</dd>
-            </div>
-            <div class="row">
-              <dt class="label">Business analysis</dt>
-              <dd>Requirements gathering, stakeholder communication, KPI development, process improvement, UAT support</dd>
-            </div>
+            <div class="row"><dt class="mono">Analysis &amp; BI</dt><dd><div class="chips"><span class="chip">SQL</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Pivot tables</span><span class="chip">What-if analysis</span></div></dd></div>
+            <div class="row"><dt class="mono">Programming</dt><dd><div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">scikit-learn</span><span class="chip">matplotlib</span><span class="chip">seaborn</span><span class="chip">Plotly</span><span class="chip">R</span><span class="chip">Jupyter</span></div></dd></div>
+            <div class="row"><dt class="mono">Methods</dt><dd><div class="chips"><span class="chip">EDA</span><span class="chip">Data cleaning</span><span class="chip">ETL</span><span class="chip">Regression</span><span class="chip">Clustering</span><span class="chip">Forecasting</span><span class="chip">A/B testing</span></div></dd></div>
+            <div class="row"><dt class="mono">Business analysis</dt><dd><div class="chips"><span class="chip">Requirements</span><span class="chip">Stakeholder communication</span><span class="chip">KPI development</span><span class="chip">Process improvement</span><span class="chip">UAT support</span></div></dd></div>
           </dl>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="background" aria-labelledby="background-title">
-      <div class="wrap section-grid">
-        <div class="section-label">
-          <p class="label">Background</p>
-        </div>
-        <div class="reveal">
-          <h2 class="section-title" id="background-title">Education and experience.</h2>
-          <ul class="timeline">
-            <li>
-              <span class="label when">2023</span>
-              <span>
-                <span class="what">Postgraduate Diploma, Business Analytics</span><br>
-                <span class="where">Seneca College, Toronto</span>
-              </span>
-            </li>
-            <li>
-              <span class="label when">2022</span>
-              <span>
-                <span class="what">Postgraduate Diploma, International Business Management</span><br>
-                <span class="where">Seneca College, Toronto</span>
-              </span>
-            </li>
-            <li>
-              <span class="label when">2021 to 2022</span>
-              <span>
-                <span class="what">Business Analyst Intern</span><br>
-                <span class="where">Arts Lab, Chennai</span>
-                <span class="detail">Market research to identify customer segments, and product demonstrations and workshops for prospective users.</span>
-              </span>
-            </li>
-            <li>
-              <span class="label when">2019 to 2021</span>
-              <span>
-                <span class="what">Business Analyst Intern</span><br>
-                <span class="where">Image, Chennai</span>
-                <span class="detail">Analytics reporting for social media strategy, lead-generation reporting, and competitor analysis with recommendations to senior management.</span>
-              </span>
-            </li>
-            <li>
-              <span class="label when">Certifications</span>
-              <span>
-                <span class="what">Google Data Analytics Professional Certificate</span><br>
-                <span class="where">Excel Essential Training (Microsoft 365)</span>
-              </span>
-            </li>
-            <li>
-              <span class="label when">Languages</span>
-              <span>
-                <span class="what">English (fluent), Tamil (native)</span>
-              </span>
-            </li>
+          <ul class="bg-list">
+            <li><span class="mono when">2023</span><span><span class="what">Postgraduate Diploma, Business Analytics</span><span class="where">Seneca College, Toronto</span></span></li>
+            <li><span class="mono when">2022</span><span><span class="what">Postgraduate Diploma, International Business Management</span><span class="where">Seneca College, Toronto</span></span></li>
+            <li><span class="mono when">2021 to 2022</span><span><span class="what">Business Analyst Intern</span><span class="where">Arts Lab, Chennai. Market research, segment analysis, product demonstrations and workshops.</span></span></li>
+            <li><span class="mono when">2019 to 2021</span><span><span class="what">Business Analyst Intern</span><span class="where">Image, Chennai. Analytics reporting for social media strategy, lead-generation reporting, competitor analysis.</span></span></li>
+            <li><span class="mono when">Certifications</span><span><span class="what">Google Data Analytics Professional Certificate</span><span class="where">Excel Essential Training (Microsoft 365)</span></span></li>
+            <li><span class="mono when">Languages</span><span><span class="what">English (fluent), Tamil (native)</span></span></li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap section-grid">
-        <div class="section-label">
-          <p class="label">Contact</p>
-        </div>
-        <div class="reveal">
-          <h2 class="section-title" id="contact-title">Hiring an analyst in Toronto?</h2>
-          <p class="contact-lede">Email is the fastest way to reach me. I reply within a day.</p>
-          <a class="big-link quiet" href="mailto:lauhithn@gmail.com">lauhithn@gmail.com</a>
-          <div class="links">
-            <a class="quiet" href="https://www.linkedin.com/in/lauhith-n/" target="_blank" rel="noopener">LinkedIn <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-            <a class="quiet" href="https://github.com/LauhithN" target="_blank" rel="noopener">GitHub <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-            <a class="quiet" href="Lauhith_Natarajan_Final_Resume_One_Page.pdf" target="_blank" rel="noopener">Resume, one page PDF <svg class="icon ext" aria-hidden="true"><use href="#i-ext"/></svg></a>
-          </div>
+      <div class="wrap">
+        <p class="mono reveal">03 &mdash; Contact</p>
+        <h2 id="contact-title" data-split>Let's make the numbers mean something.</h2>
+        <a class="big-link magnetic reveal" href="mailto:lauhithn@gmail.com" style="--i:3">lauhithn@gmail.com</a>
+        <div class="links reveal" style="--i:5">
+          <a href="https://www.linkedin.com/in/lauhith-n/" target="_blank" rel="noopener">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="https://github.com/LauhithN" target="_blank" rel="noopener">GitHub <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="Lauhith_Natarajan_Final_Resume_One_Page.pdf" target="_blank" rel="noopener">Resume, one page PDF <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
         </div>
       </div>
     </section>
@@ -398,10 +336,17 @@
   <footer class="site-footer">
     <div class="wrap">
       <p>&copy; <span id="year">2026</span> Lauhith Natarajan</p>
-      <p>Toronto, Ontario</p>
-      <p>Plain HTML and CSS. No frameworks, no tracking.</p>
+      <p>Toronto, Canada</p>
+      <p>Hand-built. No frameworks, no trackers.</p>
     </div>
   </footer>
+
+  <dialog class="case" id="case-dialog" aria-label="Case study">
+    <div class="case-shell">
+      <button class="case-close" type="button" aria-label="Close case study" autofocus><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      <div class="case-panel"></div>
+    </div>
+  </dialog>
 
   <script src="script.js" defer></script>
 </body>
